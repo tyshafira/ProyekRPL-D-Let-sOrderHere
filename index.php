@@ -24,7 +24,7 @@
             <a href="#">About</a>
             <a href="#">Event</a>
             <a href="#menu-list">Menu</a>
-            <a href="#">Book a table</a>
+            <a href="#">Order now</a>
             <a href="hal_logregis_admin.php">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
