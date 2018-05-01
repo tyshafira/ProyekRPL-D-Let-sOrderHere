@@ -35,7 +35,7 @@
         <div class="row">
           <div class="inner text-center">
             <h1 class="logo-name">Let's Order Here</h1>
-            <h2>Enjoy your lifestyle & havefun with your coffee.</h2>
+            <h2>Enjoy your lifestyle & have fun with your coffee.</h2>
             <h4>Silahkan login dengan input nomor meja Anda!</h4>
             <p><a href="https://free-template.co/" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#myModal">Login</a></p>
           </div>
