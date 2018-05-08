@@ -1,3 +1,7 @@
+<?php 
+include "connection.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +9,19 @@
 	<meta charset="utf-8">
 	<title>Let's Order Here</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-  	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  	<link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
-
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
 </head>
-<body>
 
+<body>
 	<!--banner-->
   <section id="banner">
     <div class="bg-color">
@@ -22,10 +30,10 @@
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">About</a>
-            <a href="#">Event</a>
+            <a href="#event">Event</a>
             <a href="#menu-list">Menu</a>
             <a href="#">Order now</a>
-            <a href="hal_logregis_admin.php">Admin</a>
+            <a href="#">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -44,6 +52,76 @@
     </div>
   </section>
   <!-- / banner -->
+
+<!-- event -->
+  <section id="event">
+    <div class="bg-color" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center" style="padding:60px;">
+            <h1 class="header-h">History</h1>
+            </div>
+              <div class="col-md-12" style="padding-bottom:60px;">
+              <div class="item active left">
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <?php 
+                  $syntax="SELECT nama_menu, deskripsi, gambar FROM menu Limit 16";
+                  $data= mysqli_query($link, $syntax);
+                  if ($data){
+                  $cnt=0;
+                  while ($row=mysqli_fetch_assoc($data)){
+                  $nama_menu=$row["nama_menu"];
+                  $deskripsi=$row["deskripsi"];
+                  $gambar=$row["gambar"];
+                ?>
+
+            <div class="item<?php if($cnt==0){ echo " active";} $cnt++; ?>">   <!-- untuk yg php myadminnya -->
+              <div class="col-md-6 col-sm-6 left-images box_content">
+                <img src="img/<?php echo $gambar; ?>" class="img-responsive ">
+                  </div>
+                    <div class="col-md-6 col-sm-6 details-text">
+                      <div class="content-holder">
+                       <h2><?php echo $nama_menu; ?></h2>
+                        <p><?php echo $deskripsi; ?></p>
+
+                            <address>
+                              <strong>Tempat: </strong>
+                              Jalan T. Iskandar Muda No.13-14, Iemasen Ulee Kareng, Ulee Kareng, Ceurih, Ulee Kareng, Kota Banda Aceh, Aceh 24411
+                              <br>
+                              <strong>Waktu: </strong>
+                              07:30pm
+                            </address>
+                            
+                 <!--<a class="btn btn-imfo btn-read-more" href="events-details.html">Read more</a>-->
+                </div>
+              </div>
+            </div>
+
+                  <?php 
+                     }
+                    }
+                  ?>  
+
+             <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!--/ event -->
+
 
   <!-- menu -->
   <section id="menu-list" class="section-padding">
