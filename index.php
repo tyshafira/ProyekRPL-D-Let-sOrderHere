@@ -1,3 +1,7 @@
+<?php 
+include "connection.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +9,19 @@
 	<meta charset="utf-8">
 	<title>Let's Order Here</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-  	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-  	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  	<link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
-
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
 </head>
-<body>
 
+<body>
 	<!--banner-->
   <section id="banner">
     <div class="bg-color">
@@ -58,8 +66,8 @@
               <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <?php 
-                  $syntax_show="SELECT nama_menu, deskripsi, gambar FROM menu Limit 16";
-                  $data= mysqli_query($link, $syntax_show);
+                  $syntax="SELECT nama_menu, deskripsi, gambar FROM menu Limit 16";
+                  $data= mysqli_query($link, $syntax);
                   if ($data){
                   $cnt=0;
                   while ($row=mysqli_fetch_assoc($data)){
@@ -113,7 +121,6 @@
   </div>
 </section>
   <!--/ event -->
-
 
 
   <!-- menu -->
