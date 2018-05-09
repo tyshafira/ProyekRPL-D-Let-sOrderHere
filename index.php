@@ -1,6 +1,3 @@
-<?php 
-include "connection.php"
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +26,10 @@ include "connection.php"
         <div class="container">
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#event">Event</a>
+			
+            <a href="#event">History</a>
             <a href="#menu-list">Menu</a>
-            <a href="#">Order now</a>
+            <a href="#">Your Order</a>
             <a href="#">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
