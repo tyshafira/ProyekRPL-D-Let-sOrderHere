@@ -248,5 +248,14 @@ include 'connection.php';
       } 
     ?>
 
+    <?php
+      if(isset($_GET["gagalmasuk"])){
+        echo "<script>
+          alert('data yang diinputkan sedang digunakan!');
+
+        </script>";
+      } 
+    ?>
+
 </body>
 </html>
