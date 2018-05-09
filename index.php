@@ -1,3 +1,8 @@
+<?php 
+include 'connection.php';
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +26,10 @@
         <div class="container">
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Event</a>
+            <a href="#">History</a>
             <a href="#menu-list">Menu</a>
-            <a href="#">Order now</a>
-            <a href="hal_logregis_admin.php">Admin</a>
+            <a href="#">Your Order</a>
+            <a href="#">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -57,153 +61,68 @@
 
         <div class="col-md-12  text-center" id="menu-flters">
           <ul>
-            <li><a class="filter active" data-filter=".menu-restaurant">Show All</a></li>
-            <li><a class="filter" data-filter=".breakfast">Breakfast</a></li>
-            <li><a class="filter" data-filter=".lunch">Lunch</a></li>
-            <li><a class="filter" data-filter=".dinner">Dinner</a></li>
+      
+            <li><a class="filter" data-filter=".makanan">Makanan</a></li>
+            <li><a class="filter" data-filter=".minuman">Minuman</a></li>
+            <li><a class="filter" data-filter=".coffee">Coffee</a></li>
+            
           </ul>
         </div>
 
+    
         <div id="menu-wrapper">
+    
+       <?php
+       $result = mysqli_query($link, "SELECT * FROM menu WHERE jenis_menu=1");
 
-          <div class="breakfast menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
+    while ($data = mysqli_fetch_assoc($result) )
+       {
+          echo "<div class=\"makanan menu-restaurant\">";
+           echo "<span class=\"clearfix\">";
+              echo "<a class=\"menu-title\" href=\"#\" data-meal-img=\"assets/img/restaurant/rib.jpg\">$data[nama_menu]</a>";
+              echo "<span style=\"left: 166px; right: 44px;\" class=\"menu-line\"></span>";
+              echo "<span class=\"menu-price\">$data[harga_menu]</span>";
+           echo  "</span>";
+            echo "<span class=\"menu-subtitle\">Neque porro quisquam est qui dolorem</span>";
+       
+      
 
-          <div class="breakfast menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
+        echo "<div class=\"col-md-12  text-right\" id=\"menu-flters\">";
+          echo "<ul>";
+            echo "<li><a class=\"filter\" data-filter=\".tambah\">Add</a></li>" ; 
+          echo "</ul>";
+         echo "</div>";
+            echo "</div>";
+        }
 
-          <div class="breakfast menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
+        $result = mysqli_query($link, "SELECT * FROM menu WHERE jenis_menu=2");
 
-          <div class="breakfast menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
+    while ($data = mysqli_fetch_assoc($result) )
+       {
+          echo "<div class=\"minuman menu-restaurant\">";
+           echo "<span class=\"clearfix\">";
+              echo "<a class=\"menu-title\" href=\"#\" data-meal-img=\"assets/img/restaurant/rib.jpg\">$data[nama_menu]</a>";
+              echo "<span style=\"left: 166px; right: 44px;\" class=\"menu-line\"></span>";
+              echo "<span class=\"menu-price\">$data[harga_menu]</span>";
+           echo  "</span>";
+            echo "<span class=\"menu-subtitle\">Neque porro quisquam est qui dolorem</span>";
+       
+      
 
-          <div class="lunch menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="lunch menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="lunch menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="lunch menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="lunch menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="dinner menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="dinner menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-
-          <div class="dinner menu-restaurant">
-            <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
-              <span style="left: 166px; right: 44px;" class="menu-line"></span>
-              <span class="menu-price">$20.99</span>
-            </span>
-            <span class="menu-subtitle">Neque porro quisquam est qui dolorem</span>
-          </div>
-        </div>
-
+        echo "<div class=\"col-md-12  text-right\" id=\"menu-flters\">";
+          echo "<ul>";
+            echo "<li><a class=\"filter\" data-filter=\".tambah\">Add</a></li>" ; 
+          echo "</ul>";
+         echo "</div>";
+            echo "</div>";
+        }
+        ?>
+          
+      
       </div>
     </div>
   </section>
   <!--/ menu -->
-
-  <!--<section id="hal-admin" class="section-padding">
-    <div class="cont">
-      <div class="login">
-      <div class="login__check"></div>
-      <div class="login__form">
-        <div class="login__row">
-          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
-            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
-          </svg>
-          <input type="text" class="login__input name" placeholder="Username"/>
-        </div>
-        <div class="login__row">
-          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
-            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
-          </svg>
-          <input type="password" class="login__input pass" placeholder="Password"/>
-        </div>
-        <button type="button" class="login__submit">Sign in</button>
-        <p class="login__signup">Don't have an account? &nbsp;<a>Sign up</a></p>
-      </div>
-    </div>
-    </div>
-    
-  </section>-->
 
   <!-- Modal login -->
     <div class="modal fade" id="myModal">
@@ -239,14 +158,20 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
-  <!--<script  src="js/index.js"></script>-->
-  <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
-
 
   <?php
       if(isset($_GET["gagallogin"])){
         echo "<script>
           alert('data yang dimasukkan salah');
+
+        </script>";
+      } 
+    ?>
+
+    <?php
+      if(isset($_GET["gagalmasuk"])){
+        echo "<script>
+          alert('data yang diinputkan sedang digunakan!');
 
         </script>";
       } 
