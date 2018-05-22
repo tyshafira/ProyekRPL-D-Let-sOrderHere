@@ -1,6 +1,6 @@
 <?php 
 
-	//session_start();
+	session_start();
 
 	include ('connection.php');
 	if(!empty($_POST)){
@@ -23,7 +23,7 @@
 				$syntax_meja_aktif = mysqli_query($link,$syntax_msk);
 				if ($syntax_meja_aktif){
 					if(mysqli_num_rows($login) == 1){
-						//$_SESSION['Nama'] = "$nama";
+						$_SESSION['User'] = "$no_meja";
 						header("HTTP/1.1 302 Moved Temporarily");
 						header("location: index.php#menu-list");
 						exit();
@@ -41,7 +41,4 @@
 			die(mysqli_error($link));
 		}
 	}
-		
-
-
 ?>

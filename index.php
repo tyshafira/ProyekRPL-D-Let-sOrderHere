@@ -1,10 +1,20 @@
-
-<!DOCTYPE html>
-
 <?php 
-include "connection.php"
+include 'connection.php';
+session_start();
 ?>
 
+<?php
+      //logout
+      if(isset($_GET['logOut'])) {
+        session_destroy();
+        unset($_SESSION['User']);
+        header('location : index.php');
+
+      }  
+    ?>
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -32,7 +42,7 @@ include "connection.php"
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             
-            <a href="#event">History</a>
+            <a href="#">History</a>
             <a href="#menu-list">Menu</a>
             <a href="#">Your Order</a>
             <a href="#">Admin</a>
@@ -47,83 +57,20 @@ include "connection.php"
             <h1 class="logo-name">Let's Order Here</h1>
             <h2>Enjoy your lifestyle & have fun with your coffee.</h2>
             <h4>Silahkan login dengan input nomor meja Anda!</h4>
-            <p><a href="https://free-template.co/" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#myModal">Login</a></p>
+            <?php 
+              if(isset($_SESSION['User'])){
+                echo "<p><a target=\"_blank\" class=\"btn btn-outline-white btn-lg ftco-animate\" href=\"index.php?logOut\">LogOut</a></p>";
+              }else{
+                echo "<p><a target=\"_blank\" class=\"btn btn-outline-white btn-lg ftco-animate\" data-toggle=\"modal\" data-target=\"#myModal\">Login</a></p>";
+              }
+            ?>
+            <!--<p><a href="https://free-template.co/" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#myModal">Login</a></p>-->
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- / banner -->
-
-<!-- event -->
-  <section id="event">
-    <div class="bg-color" class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 text-center" style="padding:60px;">
-            <h1 class="header-h">History</h1>
-            </div>
-              <div class="col-md-12" style="padding-bottom:60px;">
-              <div class="item active left">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <?php 
-                  $syntax="SELECT nama_menu, deskripsi, gambar FROM menu Limit 16";
-                  $data= mysqli_query($link, $syntax);
-                  if ($data){
-                  $cnt=0;
-                  while ($row=mysqli_fetch_assoc($data)){
-                  $nama_menu=$row["nama_menu"];
-                  $deskripsi=$row["deskripsi"];
-                  $gambar=$row["gambar"];
-                ?>
-
-            <div class="item<?php if($cnt==0){ echo " active";} $cnt++; ?>">   <!-- untuk yg php myadminnya -->
-              <div class="col-md-6 col-sm-6 left-images box_content">
-                <img src="img/<?php echo $gambar; ?>" class="img-responsive ">
-                  </div>
-                    <div class="col-md-6 col-sm-6 details-text">
-                      <div class="content-holder">
-                       <h2><?php echo $nama_menu; ?></h2>
-                        <p><?php echo $deskripsi; ?></p>
-
-                            <address>
-                              <strong>Tempat: </strong>
-                              Jalan T. Iskandar Muda No.13-14, Iemasen Ulee Kareng, Ulee Kareng, Ceurih, Ulee Kareng, Kota Banda Aceh, Aceh 24411
-                              <br>
-                              <strong>Waktu: </strong>
-                              07:30pm
-                            </address>
-                            
-                 <!--<a class="btn btn-imfo btn-read-more" href="events-details.html">Read more</a>-->
-                </div>
-              </div>
-            </div>
-
-                  <?php 
-                     }
-                    }
-                  ?>  
-
-             <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-              </a>
-           </div>
-         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!--/ event -->
-
 
   <!-- menu -->
   <section id="menu-list" class="section-padding">
@@ -165,7 +112,7 @@ include "connection.php"
 
         echo "<div class=\"col-md-12  text-right\" id=\"menu-flters\">";
           echo "<ul>";
-            echo "<li><a class=\"filter\" data-filter=\".tambah\">Add</a></li>" ; 
+            echo "<li><a class=\"filter btn-addorder\" idMenu=\"$data[id_menu]\" nmMenu=\"$data[nama_menu]\" data-filter=\".tambah\" data-toggle=\"modal\" data-target=\"#modal_menu\">Add</a></li>" ; 
           echo "</ul>";
          echo "</div>";
             echo "</div>";
@@ -187,7 +134,7 @@ include "connection.php"
 
         echo "<div class=\"col-md-12  text-right\" id=\"menu-flters\">";
           echo "<ul>";
-            echo "<li><a class=\"filter\" data-filter=\".tambah\">Add</a></li>" ; 
+            echo "<li><a class=\"filter btn-addorder\" idMenu=\"$data[id_menu]\" nmMenu=\"$data[nama_menu]\" data-filter=\".tambah\">Add</a></li>" ; 
           echo "</ul>";
          echo "</div>";
             echo "</div>";
@@ -227,13 +174,55 @@ include "connection.php"
 		</div>
 	<!-- End Modal login -->	
 
-
+  <!-- Modal menu -->
+    <div class="modal fade" id="modal_menu">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>Input Banyak Menu</h3>
+          </div>
+          <div class="modal-body">
+            <form action="pesanan.php" id="menu_popUp" method="post">
+              <div class="form-group text-center">
+                <!--<label for="pmenu">Menu...</label>-->
+                <label for="pilih_menu" id="titleMenu"></label>
+                <input type="hidden" name="id_menu" id="add_menu_input" value="0">
+                <input type="number" name="jmlh_order" placeholder="Banyak Menu" id="pilih_menu" min="1" required>
+              </div>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary" name="submit">Add To Order</button>
+                <p>Selesai Order? <a href="index.php#">Klik disini!</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- End Modal  -->  
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $(".btn-addorder").click(function(){
+        <?php
+        if(!isset($_SESSION['User'])){
+          echo "alert('Silahkan Login dahulu sebelum memesan!');";
+          echo "location.replace('index.php');";
+        }
+        ?>
+        var idMenu = $(this).attr("idMenu");
+        var namaMenu = $(this).attr("nmMenu");
+        $("#add_menu_input").attr("value", idMenu);
+        $("#titleMenu").html(namaMenu);
+      });
+    });
+  </script>
 
   <?php
       if(isset($_GET["gagallogin"])){
