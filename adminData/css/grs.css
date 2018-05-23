@@ -1,0 +1,24 @@
+/* line section */
+.grs{
+	background-color: silver;
+	line-height: 2px;
+	color: silver;
+}
+
+.intro2 {
+	display: table;
+	width: 100%;
+	padding: 0;
+	text-align: left;
+	background: url(../img/intro-bg.jpg) no-repeat center bottom;
+	background-color: #e5e5e5;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	color: green;
+}
+
+.pink {color: pink;}
+.cokelat {color: brown;}
+.green {color: green;}
