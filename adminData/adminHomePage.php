@@ -51,7 +51,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
-        <li><a href="daftarPesanFIX.php" class="page-scroll">Daftar Pesanan</a></li>
+        <li><a href="daftarPesanJoin.php" class="page-scroll">Daftar Pesanan</a></li>
         <li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
         <li><a href="../logout.php">Logout</a></li>
       </ul>
