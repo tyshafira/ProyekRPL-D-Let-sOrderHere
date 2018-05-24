@@ -10,14 +10,15 @@ if(isset($_POST['TambahMenu'])){
     $jenis_menu = filter_input(INPUT_POST, 'jenis_menu', FILTER_SANITIZE_NUMBER_INT);
     $deskripsi = filter_input(INPUT_POST, 'deskripsi', FILTER_SANITIZE_STRING);
     $harga_menu = filter_input(INPUT_POST, 'harga_menu', FILTER_SANITIZE_NUMBER_INT);
+    $gambar = filter_input(INPUT_POST, 'gambar', FILTER_SANITIZE_URL);
     // enkripsi password
     //$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     //$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 
     // menyiapkan query
-    $sql = "INSERT INTO menu (nama_menu, jenis_menu, deskripsi, harga_menu) 
-            VALUES (:nama_menu, :jenis_menu, :deskripsi, :harga_menu)";
+    $sql = "INSERT INTO menu (nama_menu, jenis_menu, deskripsi, harga_menu, gambar) 
+            VALUES (:nama_menu, :jenis_menu, :deskripsi, :harga_menu, :gambar)";
     $stmt = $db->prepare($sql);
 
     // bind parameter ke query
@@ -26,7 +27,8 @@ if(isset($_POST['TambahMenu'])){
         ":nama_menu" => $nama_menu,
         ":jenis_menu" => $jenis_menu,
         ":deskripsi" => $deskripsi,
-        ":harga_menu" => $harga_menu
+        ":harga_menu" => $harga_menu,
+        ":gambar" => $gambar
     );
 
     // eksekusi query untuk menyimpan ke database
@@ -81,6 +83,11 @@ if(isset($_POST['TambahMenu'])){
             <div class="form-group">
                 <label for="harga_menu">Harga Menu</label>
                 <input class="form-control" type="number" name="harga_menu" placeholder="harga menu" />
+            </div>
+
+            <div class="form-group">
+                <label for="gambar">gambar</label>
+                <input class="form-control" type="file" name="gambar" />
             </div>
 
 
