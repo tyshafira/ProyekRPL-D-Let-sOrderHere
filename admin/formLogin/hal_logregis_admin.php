@@ -121,7 +121,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login &amp; Register Templates</title>
+        <title>Login and Register page</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -139,7 +139,7 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="shortcut icon" href="assets/ico/favicon.jpg">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -151,23 +151,19 @@
 
         <!-- Top content -->
         <div class="top-content">
-        	
-            <div class="inner-bg">
-                <div class="container">
-                	
-                    <div class="row">
+        	 <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Please</strong> Login <strong>or</strong> Register Forms</h1>
-                            <div class="description">
-                            	<p>
-                            	</p>
-                            </div>
+							
+                            <h1>Please Login <strong>or</strong> Register Forms</h1>
+							<hr>
                         </div>
                     </div>
+            
+                <div class="container">
+                   
                     
                     <div class="row">
                         <div class="col-sm-5">
-                        	
                         	<div class="form-box">
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
@@ -282,24 +278,24 @@
                     </div>
                     
                 </div>
-            </div>
+            
             
         </div>
 
-        <!-- Footer -->
+       <!-- <!-- Footer 
         <footer>
         	<div class="container">
         		<div class="row">
         			
         			<div class="col-sm-8 col-sm-offset-2">
         				<div class="footer-border"></div>
-        				<p>Made by Anli Zaimi at <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a> 
-        					having a lot of fun. <i class="fa fa-smile-o"></i></p>
+        				<p>Made by <a><strong>letOrderHere</strong></a> 
+        					havefun with your experience. <i class="fa fa-smile-o"></i></p>
         			</div>
         			
         		</div>
         	</div>
-        </footer>
+        </footer> -->
 
         <!-- Javascript -->
         <script src="assets/js/jquery-1.11.1.min.js"></script>

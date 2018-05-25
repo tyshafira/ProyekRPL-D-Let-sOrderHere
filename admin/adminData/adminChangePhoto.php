@@ -9,6 +9,16 @@
 	include ("../../connection.php");
 ?>
 
+<?php
+	if(isset($_POST["submit"]))
+	{
+		$nama_folder="img/adminPhoto";
+		$tmp = $_FILES["file_upload"]["tmp_name"];
+		$nama_file = $_COOKIE['email'];
+		move_uploaded_file($tmp, "$nama_folder/$nama_file");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -61,7 +71,7 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			<a class="navbar-brand page-scroll" href="adminSetting.php"><i class="fa fa-user"></i><?php echo $_COOKIE["username"] ?></a> </div>
+			<a class="navbar-brand page-scroll" href="adminAccountInformation.php"><img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=30 style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -92,14 +102,39 @@
 			<br>
 			<div class="akunSetting">
 			<ul>
-			    <a title="catok" href="adminAccountInformation.php">Informasi Akun Anda </a>
-			    <a title="jangkrik" href="adminChangePhoto.php">Edit Your Photo </a>
-			    <a title="cakret" href="adminChangePassword.php">Change Password </a>
+			    <a title="informasi" href="adminAccountInformation.php">Informasi Akun Anda </a>
+			    <a title="select" href="adminChangePhoto.php">Edit Your Photo </a>
+			    <a title="password" href="adminChangePassword.php">Change Password </a>
 			</ul>
 			</div>
-			<br>
-			<br>
+			
 			<!-- end of admin navigation -->
+			
+			<div class="form-box" action="#">
+               <div class="form-top">
+	               <div class="form-top-left">
+	                   	<h3>Ubah Photo</h3>
+	               </div>
+	               <div class="form-top-right">
+	                   	<i class="fa fa-photo"></i>
+	               </div>
+	           </div>
+	           <div class="form-bottom">
+				
+				<!-- form change password -->
+				
+				    <form role="form" action="adminChangePhoto.php" enctype="multipart/form-data" method="post" class="registration-form">
+				       <img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=200>
+					   <div class="form-group">
+				                   	<label class="sr-only" for="form-password">password</label>
+				                   	<input type="file" name="file_upload" class="btn" value=10000000>
+				       </div>
+					
+				                   <button type="submit" name="submit" class="btn">Ubah Photo!</button>
+				    </form>
+				<!-- end of change password -->
+				</div>
+				</div>
                    	
         </div>
 		</div>

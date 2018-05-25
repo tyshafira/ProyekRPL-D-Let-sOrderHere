@@ -1,6 +1,6 @@
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: font-family: 'Lobster', cursive;;
     font-size: 16px;
     font-weight: 300;
     color: #888;
@@ -112,7 +112,7 @@ img { max-width: 100%; }
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-	margin-top: 70px;
+	margin-top: 20px;
 }
 
 .form-top {
