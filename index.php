@@ -6,11 +6,18 @@ session_start();
 <?php
       //logout
       if(isset($_GET['logOut'])) {
-        session_destroy();
-        unset($_SESSION['User']);
-        header('location : index.php');
-
-      }  
+        $meja_pel = (int)$_SESSION['User'];
+        $del_mejaAktif = "DELETE FROM `meja_aktif` WHERE no_meja_aktif = '$meja_pel'";
+        $syntax_del = mysqli_query($link,$del_mejaAktif);
+        if($syntax_del){
+          session_destroy();
+          unset($_SESSION['User']);
+          header('location : index.php');
+        }
+        else{
+          die(mysqli_error($link));
+        }
+      }
     ?>
 
 
@@ -44,7 +51,7 @@ session_start();
             
             <a href="#">History</a>
             <a href="#menu-list">Menu</a>
-            <a href="#">Your Order</a>
+            <a href="#myorder">Your Order</a>
             <a href="#">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
@@ -64,7 +71,6 @@ session_start();
                 echo "<p><a target=\"_blank\" class=\"btn btn-outline-white btn-lg ftco-animate\" data-toggle=\"modal\" data-target=\"#myModal\">Login</a></p>";
               }
             ?>
-            <!--<p><a href="https://free-template.co/" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#myModal">Login</a></p>-->
           </div>
         </div>
       </div>
@@ -87,8 +93,9 @@ session_start();
       
             <li><a class="filter" data-filter=".makanan">Makanan</a></li>
             <li><a class="filter" data-filter=".minuman">Minuman</a></li>
-            <li><a class="filter" data-filter=".coffee">Coffee</a></li>
-            
+            <!--<li><a class="filter" data-filter=".coffee">Coffee</a></li>-->
+            <p>Selesai Order? <a href="index.php#myorder">Klik disini!</a></p>
+
           </ul>
         </div>
 
@@ -134,7 +141,7 @@ session_start();
 
         echo "<div class=\"col-md-12  text-right\" id=\"menu-flters\">";
           echo "<ul>";
-            echo "<li><a class=\"filter btn-addorder\" idMenu=\"$data[id_menu]\" nmMenu=\"$data[nama_menu]\" data-filter=\".tambah\">Add</a></li>" ; 
+            echo "<li><a class=\"filter btn-addorder\" idMenu=\"$data[id_menu]\" nmMenu=\"$data[nama_menu]\" data-filter=\".tambah\" data-toggle=\"modal\" data-target=\"#modal_menu\">Add</a></li>" ; 
           echo "</ul>";
          echo "</div>";
             echo "</div>";
