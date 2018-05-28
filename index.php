@@ -154,6 +154,95 @@ session_start();
   </section>
   <!--/ menu -->
 
+  <!-- myorder -->
+  <section id="myorder" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="header-h">Your Order</h1>
+          <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+            <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
+        </div>
+      </div>
+      <div class="row msg-row">
+        <div class="col-md-4 col-sm-4 mr-15">
+          <!--<div class="media-2">
+            <div class="media-left">
+              <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>
+            </div>
+            <div class="media-body">
+              <h4 class="dark-blue regular">Phone Numbers</h4>
+              <p class="light-blue regular alt-p">+628906734768 <span class="contacts-sp">Center Service</span></p>
+            </div>
+          </div>-->
+          <div class="media-2">
+            <div class="media-left">
+              <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
+            </div>
+            <div class="media-body">
+              <h4 class="dark-blue regular">Opening Hours</h4>
+              <p class="light-blue regular alt-p"> Monday to Friday 09.00 - 24:00</p>
+              <p class="light-blue regular alt-p">
+                Friday and Sunday 08:00 - 03.00
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+          <form action="" method="post" role="form" class="contactForm">
+            <div id="sendmessage">Your request has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <div class="col-md-6 col-sm-6 contact-form pad-form">
+              <div class="form-group label-floating is-empty">
+                <input type="disabled" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+            </div>
+
+            <!--- Proses Penarikan data pemesanan-->
+            <?php 
+              $meja = $_SESSION['User'];
+              $ambil = "SELECT m.nama_menu, p.jumlah_order, m.harga_menu from menu m join pesan p where m.id_menu = p.id_menu and p.id_mejapel = '$meja';";
+                $query = mysqli_query($link,$ambil);
+
+            ?>
+            <div class="col-md-12 contact-form">
+              <div class="form-group label-floating is-empty">
+                <table class="table table-striped">
+                    <thead>
+                      <th class="text-center">Nama Menu</th>
+                      <th class="text-center">Jumalah Pesanan</th>
+                      <th class="text-center">Harga Menu</th>
+                    </thead>
+                    <tbody>
+                      <?php if(mysqli_num_rows($query)) {?>
+                        <?php while($row = mysqli_fetch_array($query)) {?>
+                          <tr>
+                            <td class="text-center"><?php echo $row['nama_menu'] ?></td>
+                            <td class="text-center"><?php echo $row['jumlah_order'] ?></td>
+                            <td class="text-center"><?php echo $row['harga_menu'] ?></td>
+                          </tr>
+                        <?php } ?>
+                      <?php } ?>
+                    </tbody>
+                  </table>
+                  <!-- end proses --> 
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-12 btnpad">
+              <div class="contacts-btn-pad">
+                <button class="contacts-btn">Order Now!</button>
+                <button class="contacts-btn">FINISH</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / myorder -->
+
   <!-- Modal login -->
     <div class="modal fade" id="myModal">
 			<div class="modal-dialog modal-sm">
