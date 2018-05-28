@@ -2,7 +2,7 @@
 
 require_once("connection.php");
 
-if(isset($_POST['TambahMenu'])){
+if(isset($_POST['Tambah Menu'])){
 
     // filter data yang diinputkan
     //$id_menu = filter_input(INPUT_POST, 'id_menu', FILTER_SANITIZE_STRING);
@@ -19,7 +19,7 @@ if(isset($_POST['TambahMenu'])){
     // menyiapkan query
     $sql = "INSERT INTO menu (nama_menu, jenis_menu, deskripsi, harga_menu, gambar) 
             VALUES (:nama_menu, :jenis_menu, :deskripsi, :harga_menu, :gambar)";
-    $stmt = $db->prepare($sql);
+    $stmt = $link->prepare($sql);
 
     // bind parameter ke query
     $params = array(
@@ -36,7 +36,7 @@ if(isset($_POST['TambahMenu'])){
 
     // jika query simpan berhasil, maka user sudah terdaftar
     // maka alihkan ke halaman login
-    if($saved) header("Location: index.php");
+    if($saved) header("Location: adminHomePage.php");
 }
 
 ?>
