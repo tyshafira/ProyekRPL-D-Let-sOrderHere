@@ -10,6 +10,16 @@
     echo "<script>alert('Pesanan Berhasil Dibayar.');</script>";
   }
 
+  if (isset($_POST['harga_yang_dibayar'])) {
+    $id_meja = $_POST['id_meja'];
+    $total_harga = $_POST['total_harga'];
+    $jenis_pembayaran = $_POST['jenis_pembayaran'];
+
+    $sql = "insert into rekap_struk(id_mejapel, jenis_bayar) values($id_meja, $jenis_pembayaran)";
+    $result = $link->query($sql);
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
