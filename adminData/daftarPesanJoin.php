@@ -5,7 +5,10 @@
   }
 
   include ("../../connection.php");
-?>
+
+  if (isset($_GET['notif']) && $_GET['notif'] == 1) {
+    echo "<script>alert('Pesanan Berhasil Dibayar.');</script>";
+  }
 
 <!DOCTYPE html>
 <html lang="en">
