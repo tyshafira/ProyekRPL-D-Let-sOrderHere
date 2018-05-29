@@ -168,7 +168,7 @@
                                   ?> 
                                 </table>
                               </p>
-                              <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Bayar</a></p>
+                              <p class="mb-0"><a class="tombol-bayar btn btn-primary btn-sm" data-id-meja="<?php echo $meja['no_meja']; ?>">Bayar</a></p>
                               </div>
                             </div>
                           </div>
@@ -176,10 +176,9 @@
 
                         <?php
                       }
-
                     } 
                     else {
-                        echo "<p>Tidak ada data</p>";
+                        echo "<p>Tidak ada data pesanan</p>";
                     }
                   ?>
             </div>
