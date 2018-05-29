@@ -18,6 +18,12 @@
     $sql = "insert into rekap_struk(id_mejapel, jenis_bayar) values($id_meja, $jenis_pembayaran)";
     $result = $link->query($sql);
 
+    $sql = "delete from pesan where id_mejapel = $id_meja";
+    $result = $link->query($sql);
+
+    header("Location:adminjoinmodal.php?notif=1");
+  }
+
     ?>
 
 <!DOCTYPE html>
