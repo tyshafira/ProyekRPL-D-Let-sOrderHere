@@ -233,5 +233,13 @@
                     <option value="2">Kredit</option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputName2">Harga Yang Dibayar</label>
+                  <div class="clearfix"></div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Rp</span>
+                    <input type="text" name="harga_yang_dibayar" onkeyup="updateKembalian()" class="form-control" id="exampleInputName2" required>
+                  </div>
+                </div>
 </body>
 </html>
