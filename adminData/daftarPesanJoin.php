@@ -206,5 +206,17 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Struct</h4>
         </div>
+        <div class="modal-body">
+          <table id="data-pesanan" class="table table-striped">
+            <thead>
+              <tr>
+              <td>No</td>
+              <td>Nama Menu</td>
+              <td>Qty</td>
+              <td>Harga Satuan</td>
+            </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
 </body>
 </html>
