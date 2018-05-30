@@ -241,5 +241,18 @@
                     <input type="text" name="harga_yang_dibayar" onkeyup="updateKembalian()" class="form-control" id="exampleInputName2" required>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail2">Kembalian</label>
+                  <div class="clearfix"></div>
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Rp</span>
+                    <input type="text" name="kembalian" class="form-control" id="exampleInputEmail2" disabled value="0">
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
 </body>
 </html>
