@@ -218,5 +218,10 @@
             </thead>
             <tbody></tbody>
           </table>
+          <div id="total-harga" data-total-harga="0"></div>
+          <div class="row">
+            <div class="col-md-offset-8 col-md-4">
+              <input type="hidden" name="id_meja">
+              <input type="hidden" name="total_harga">
 </body>
 </html>
