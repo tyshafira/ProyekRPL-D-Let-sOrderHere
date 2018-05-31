@@ -293,6 +293,9 @@
         dataBaru += '<td>'+totalHarga+'</td>';
         dataBaru += '</tr>';
 
+
+        
+
         $("#data-pesanan tbody").append(dataBaru);
         $('#total-harga').data('id-meja', totalHarga);
         $('input[name=total_harga]').val(totalHarga);
@@ -300,6 +303,17 @@
 
     $('#myModal').modal('show');
   },);
+
+  function updateShow(){
+    var jenis_pembayaran = $('select[name=jenis_pembayaran]').val();
+    if (jenis_pembayaran == 1) {
+      document.getElementById('bagian-pembayaran').style.display='block'; 
+      $("input[name=harga_yang_dibayar]").attr("required", true);
+    }else{
+      document.getElementById('bagian-pembayaran').style.display='none'; 
+      $("input[name=harga_yang_dibayar]").attr("required", false);
+    }
+  }
 
    function updateKembalian(){
     var harga_yang_dibayar = $("input[name=harga_yang_dibayar]").val();
