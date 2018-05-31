@@ -273,7 +273,8 @@
     $('input[name=id_meja]').val(id_meja);
     $.post("adminGetDataPesanan.php", {id_meja: id_meja}, function(result){
       var totalHarga = 0;
-       $("#data-pesanan tbody").children().remove();
+      var jenis_pembayaran = 'Tunai';
+      $("#data-pesanan tbody").children().remove();
       $.each(result, function( key, value) {
         var dataBaru = '';
         dataBaru += '<tr>';
@@ -285,7 +286,7 @@
 
         jenis_pembayaran = value.jenis_bayar;
 
-         totalHarga += parseInt(value.harga_menu) * parseInt(value.jumlah_order);
+        totalHarga += parseInt(value.harga_menu) * parseInt(value.jumlah_order);
         $("#data-pesanan tbody").append(dataBaru);
       });
 
