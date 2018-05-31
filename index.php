@@ -49,10 +49,16 @@ session_start();
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             
-            <a href="#">History</a>
+            <a href="#event">History</a>
             <a href="#menu-list">Menu</a>
-            <a href="#myorder">Your Order</a>
-            <a href="#">Admin</a>
+            <!--<a href="#myorder">Your Order</a>-->
+            <?php
+            if(isset($_SESSION['User'])){
+              echo "<a href=\"#myorder\">Your Order</a>";
+            }
+
+            ?>
+            <a href="admin/formLogin/hal_logregis_admin.php">Admin</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>
