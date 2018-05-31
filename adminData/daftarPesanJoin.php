@@ -283,6 +283,8 @@
         dataBaru += '<td>'+value.harga_menu+'</td>';
         dataBaru += '</tr>';
 
+        jenis_pembayaran = value.jenis_bayar;
+
          totalHarga += parseInt(value.harga_menu) * parseInt(value.jumlah_order);
         $("#data-pesanan tbody").append(dataBaru);
       });
@@ -298,7 +300,6 @@
           $('select[name=jenis_pembayaran]').val(2);
           updateShow();
         }
-
 
         $("#data-pesanan tbody").append(dataBaru);
         $('#total-harga').data('id-meja', totalHarga);
