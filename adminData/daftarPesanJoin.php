@@ -273,6 +273,14 @@
     $('input[name=id_meja]').val(id_meja);
     $.post("adminGetDataPesanan.php", {id_meja: id_meja}, function(result){
       var totalHarga = 0;
-      
+       $("#data-pesanan tbody").children().remove();
+      $.each(result, function( key, value) {
+        var dataBaru = '';
+        dataBaru += '<tr>';
+        dataBaru += '<td>'+(key+1)+'.</td>';
+        dataBaru += '<td>'+value.nama_menu+'</td>';
+        dataBaru += '<td>'+value.jumlah_order+'</td>';
+        dataBaru += '<td>'+value.harga_menu+'</td>';
+        dataBaru += '</tr>';
 </body>
 </html>
