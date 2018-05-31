@@ -292,5 +292,13 @@
         dataBaru += '<td style="text-align:right" colspan="3">Total Harga</td>';
         dataBaru += '<td>'+totalHarga+'</td>';
         dataBaru += '</tr>';
+
+        $("#data-pesanan tbody").append(dataBaru);
+        $('#total-harga').data('id-meja', totalHarga);
+        $('input[name=total_harga]').val(totalHarga);
+    }, "json");
+
+    $('#myModal').modal('show');
+  },);
 </body>
 </html>
