@@ -70,13 +70,7 @@ session_start();
             <h1 class="logo-name">Let's Order Here</h1>
             <h2>Enjoy your lifestyle & have fun with your coffee.</h2>
             <h4>Silahkan login dengan input nomor meja Anda!</h4>
-            <?php 
-              if(isset($_SESSION['User'])){
-                echo "<p><a target=\"_blank\" class=\"btn btn-outline-white btn-lg ftco-animate\" href=\"index.php?logOut\">LogOut</a></p>";
-              }else{
-                echo "<p><a target=\"_blank\" class=\"btn btn-outline-white btn-lg ftco-animate\" data-toggle=\"modal\" data-target=\"#myModal\">Login</a></p>";
-              }
-            ?>
+            <p><a href="https://free-template.co/" target="_blank" class="btn btn-outline-white btn-lg ftco-animate" data-toggle="modal" data-target="#myModal">Login</a></p>
           </div>
         </div>
       </div>
