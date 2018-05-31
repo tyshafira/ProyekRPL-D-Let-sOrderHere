@@ -5,20 +5,20 @@ session_start();
 
 <?php
       //logout
-      if(isset($_GET['logOut'])) {
-        $meja_pel = (int)$_SESSION['User'];
-        $del_mejaAktif = "DELETE FROM `meja_aktif` WHERE no_meja_aktif = '$meja_pel'";
-        $syntax_del = mysqli_query($link,$del_mejaAktif);
-        if($syntax_del){
+    if(isset($_GET['logOut'])) {
+      $meja_pel = (int)$_SESSION['User'];
+      $del_mejaAktif = "UPDATE `data_meja` SET `status`='Tidak' WHERE id_mejapel = '$meja_pel';";
+      $syntax_del = mysqli_query($link,$del_mejaAktif);
+      if($syntax_del){
           session_destroy();
           unset($_SESSION['User']);
           header('location : index.php');
-        }
-        else{
-          die(mysqli_error($link));
-        }
       }
-    ?>
+      else{
+          die(mysqli_error($link));
+      }
+    }  
+?>
 
 
 <!DOCTYPE html>
