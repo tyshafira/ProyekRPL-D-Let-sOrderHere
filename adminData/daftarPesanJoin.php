@@ -286,5 +286,11 @@
          totalHarga += parseInt(value.harga_menu) * parseInt(value.jumlah_order);
         $("#data-pesanan tbody").append(dataBaru);
       });
+
+      var dataBaru = '';
+        dataBaru += '<tr>';
+        dataBaru += '<td style="text-align:right" colspan="3">Total Harga</td>';
+        dataBaru += '<td>'+totalHarga+'</td>';
+        dataBaru += '</tr>';
 </body>
 </html>
