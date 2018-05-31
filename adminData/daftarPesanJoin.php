@@ -294,7 +294,11 @@
         dataBaru += '</tr>';
 
 
-        
+        if (jenis_pembayaran == 'Kredit') {
+          $('select[name=jenis_pembayaran]').val(2);
+          updateShow();
+        }
+
 
         $("#data-pesanan tbody").append(dataBaru);
         $('#total-harga').data('id-meja', totalHarga);
