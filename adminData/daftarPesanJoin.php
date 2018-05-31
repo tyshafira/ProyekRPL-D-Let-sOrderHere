@@ -224,29 +224,32 @@
               <input type="hidden" name="id_meja">
               <input type="hidden" name="total_harga">
 
-               <!-- <div class="form-inline"> -->
+              <!-- <div class="form-inline"> -->
                 <div class="form-group">
                   <label for="exampleInputEmail2">Jenis Pembayaran</label>
                   <div class="clearfix"></div>
-                  <select name="jenis_pembayaran" class="form-control" required>
+                  <select name="jenis_pembayaran" class="form-control" onchange="updateShow()" required>
                     <option value="1">Tunai</option>
                     <option value="2">Kredit</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputName2">Harga Yang Dibayar</label>
-                  <div class="clearfix"></div>
-                  <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Rp</span>
-                    <input type="text" name="harga_yang_dibayar" onkeyup="updateKembalian()" class="form-control" id="exampleInputName2" required>
+
+                <div id="bagian-pembayaran" style="display: block">
+                  <div class="form-group">
+                    <label for="exampleInputName2">Harga Yang Dibayar</label>
+                    <div class="clearfix"></div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">Rp</span>
+                      <input type="text" name="harga_yang_dibayar" onkeyup="updateKembalian()" class="form-control" id="exampleInputName2" required>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail2">Kembalian</label>
-                  <div class="clearfix"></div>
-                  <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Rp</span>
-                    <input type="text" name="kembalian" class="form-control" id="exampleInputEmail2" disabled value="0">
+                  <div class="form-group">
+                    <label for="exampleInputEmail2">Kembalian</label>
+                    <div class="clearfix"></div>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1">Rp</span>
+                      <input type="text" name="kembalian" class="form-control" id="exampleInputEmail2" disabled value="0">
+                    </div>
                   </div>
                 </div>
               <!-- </div> -->
