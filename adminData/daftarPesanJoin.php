@@ -300,5 +300,14 @@
 
     $('#myModal').modal('show');
   },);
+
+   function updateKembalian(){
+    var harga_yang_dibayar = $("input[name=harga_yang_dibayar]").val();
+    var totalHarga = $('#total-harga').data('id-meja');
+    var kembalian = parseInt(harga_yang_dibayar) - parseInt(totalHarga);
+    $("input[name=kembalian]").val(kembalian);
+  }
+
+</script>
 </body>
 </html>
