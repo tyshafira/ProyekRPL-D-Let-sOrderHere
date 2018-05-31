@@ -267,5 +267,12 @@
 <script src="https://tacoding.comrade-dev.com/assets/js/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+  $('.tombol-bayar').click(function(){
+    var id_meja = $(this).data('id-meja');
+    $('input[name=id_meja]').val(id_meja);
+    $.post("adminGetDataPesanan.php", {id_meja: id_meja}, function(result){
+      var totalHarga = 0;
+      
 </body>
 </html>
