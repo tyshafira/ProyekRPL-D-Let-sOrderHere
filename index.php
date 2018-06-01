@@ -364,6 +364,33 @@ session_start();
 </div>
 <!-- End Modal CONFIRM-ORDER -->  
 
+<!-- Modal CONFIRM-PAYMENT -->
+<div class="modal fade" id="mypayment">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Konfirmasi Pembayaran</h3>
+      </div>
+      <div class="modal-body">
+        <form action="jenis_byr.php" id="conf-paymnt" method="post">
+          <div class="form-group text-center">
+            <label for="paymnt">Tentukan Jenis Pembayaranmu :</label>
+            <br>
+            <input type="radio" name="metode" value="Debet" id="rd1"> <label for="rd1">Debet</label>
+            <!-- <input type="radio" name="metode" value="Kredit" id="rd2"> <label for="rd2">Kredit</label> -->
+            <input type="radio" name="metode" value="Tunai" id="rd3"> <label for="rd3">Tunai</label>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary" name="submit">Pilih</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal CONFIRM-PAYMENT --> 
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.easing.min.js"></script>
@@ -387,6 +414,17 @@ session_start();
       });
     });
   </script>
+
+  <script>
+  $(document).ready(function(){
+    $(".btn-conforderYa").click(function(){
+      <?php 
+      echo "alert('Pesananmu dalam proses, silahkan menunggu!');";
+      echo "location.replace('index.php#event');";
+      ?>
+    });
+  });
+</script>
 
   <?php
       if(isset($_GET["gagallogin"])){
