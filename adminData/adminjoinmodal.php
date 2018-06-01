@@ -370,6 +370,5 @@ $("#jenis_pembayaran").change(function(){
         return false;
     }   
 </script>  -->
-
 </body>
 </html>
