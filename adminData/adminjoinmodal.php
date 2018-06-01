@@ -229,7 +229,7 @@
                   <div class="clearfix"></div>
                   <select name="jenis_pembayaran" class="form-control" onchange="updateShow()" required>
                     <option value="1">Tunai</option>
-                    <option value="2">Kredit</option>
+                    <option value="2">Debet</option>
                   </select>
                 </div>
 
@@ -299,7 +299,7 @@
         dataBaru += '</tr>';
 
 
-        if (jenis_pembayaran == 'Kredit') {
+        if (jenis_pembayaran == 'Debet') {
           $('select[name=jenis_pembayaran]').val(2);
           updateShow();
         }
