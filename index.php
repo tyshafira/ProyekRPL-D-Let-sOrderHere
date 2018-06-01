@@ -155,6 +155,7 @@ session_start();
   <!--/ menu -->
 
   <!-- myorder -->
+  <?php if (isset($_SESSION['User'])) : ?>
   <section id="myorder" class="section-padding">
     <div class="container">
       <div class="row">
@@ -166,15 +167,6 @@ session_start();
       </div>
       <div class="row msg-row">
         <div class="col-md-4 col-sm-4 mr-15">
-          <!--<div class="media-2">
-            <div class="media-left">
-              <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>
-            </div>
-            <div class="media-body">
-              <h4 class="dark-blue regular">Phone Numbers</h4>
-              <p class="light-blue regular alt-p">+628906734768 <span class="contacts-sp">Center Service</span></p>
-            </div>
-          </div>-->
           <div class="media-2">
             <div class="media-left">
               <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
@@ -193,11 +185,12 @@ session_start();
             <div id="sendmessage">Your request has been sent. Thank you!</div>
             <div id="errormessage"></div>
             <div class="col-md-6 col-sm-6 contact-form pad-form">
-              <div class="form-group label-floating is-empty">
-                <input type="disabled" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validation"></div>
-              </div>
-            </div>
+                      <div class="form-group label-floating is-empty">
+                        <?php $mejaSkrg = $_SESSION['User']; ?>
+                        <h3 id="mejaAktif" class="header-b"><b><?php echo "Meja Nomor $mejaSkrg"; ?></b></h3>
+                        <div class="validation"></div>
+                      </div>
+                    </div>
 
             <!--- Proses Penarikan data pemesanan-->
             <?php 
@@ -211,7 +204,7 @@ session_start();
                 <table class="table table-striped">
                     <thead>
                       <th class="text-center">Nama Menu</th>
-                      <th class="text-center">Jumalah Pesanan</th>
+                      <th class="text-center">Jumlah Pesanan</th>
                       <th class="text-center">Harga Menu</th>
                     </thead>
                     <tbody>
@@ -232,8 +225,8 @@ session_start();
             </div>
             <div class="col-md-12 btnpad">
               <div class="contacts-btn-pad">
-                <button class="contacts-btn">Order Now!</button>
-                <button class="contacts-btn">FINISH</button>
+                <button class="contacts-btn" data-toggle="modal" data-target="#myconfirm">Order Now!</button>
+                        <button class="contacts-btn" data-toggle="modal" data-target="#mypayment">FINISH</button>
               </div>
             </div>
           </form>
@@ -241,6 +234,7 @@ session_start();
       </div>
     </div>
   </section>
+  <?php endif; ?>
   <!-- / myorder -->
 
   <!-- Modal login -->
