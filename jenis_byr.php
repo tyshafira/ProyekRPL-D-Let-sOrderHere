@@ -1,7 +1,6 @@
 <?php 
 
 	session_start();
-
 	include ('connection.php');
 
 	if(!empty($_POST)) {
@@ -21,9 +20,7 @@
 			header("location : index.php?gagallogin");
 			exit();
 		}
-
 	}else {
 		die(mysqli_error($link));
 	}
-
  ?>
