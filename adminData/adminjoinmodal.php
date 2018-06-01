@@ -30,7 +30,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Project RPL</title>
+<title>Project RPL Lets Order Here</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
