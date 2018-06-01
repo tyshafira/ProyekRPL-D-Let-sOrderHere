@@ -14,7 +14,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spectrum</title>
+<title>Project RPL</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -51,7 +51,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
-        <li><a href="daftarPesanJoin.php" class="page-scroll">Daftar Pesanan</a></li>
+        <li><a href="adminjoinmodal.php" class="page-scroll">Daftar Pesanan</a></li>
         <li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
         <li><a href="../logout.php">Logout</a></li>
       </ul>
