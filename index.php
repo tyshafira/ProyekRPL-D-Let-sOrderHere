@@ -313,14 +313,57 @@ session_start();
               </div>
               <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary" name="submit">Add To Order</button>
-                <p>Selesai Order? <a href="index.php#">Klik disini!</a></p>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  <!-- End Modal  -->  
+  <!-- End Modal Menu -->  
+
+  <!-- Modal CONFIRM-ORDER -->
+<div class="modal fade" id="myconfirm">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content page1">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Konfirmasi Pesanan</h3>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="conf-order" method="post">
+          <div class="form-group text-center">
+            <label for="confm-order">Kamu yakin akan proses order sekarang?</label>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-conforderYa" name="conf-ya">Ya</button>
+            <button type="submit" class="btn btn-primary btn-conforderNo" name="conf-no" href="index.php#myorder">Tidak</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-content page2">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Konfirmasi Pesanan</h3>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="conf-order" method="post">
+          <div class="form-group text-center">
+            <label for="confm-order">Pesananmu sedang diproses, silahkan menunggu!</label>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-conforderOk" name="conf-ya">Ok</button>
+            <!-- <button type="submit" class="btn btn-primary btn-conforderNo" name="conf-no" href="index.php#myorder">Tidak</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal CONFIRM-ORDER -->  
+
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.easing.min.js"></script>
