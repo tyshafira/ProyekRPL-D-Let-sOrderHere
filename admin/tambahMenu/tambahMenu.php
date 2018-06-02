@@ -66,7 +66,7 @@ if(isset($_POST['tambahMenu'])){
     <div class="row">
         <div class="col-md-6">
 
-        <p>&larr; <a href="adminHomePage.php">Laman Admin</a>
+        <p>&larr; <a href="adminHomePage.php">Halaman Admin</a>
 
         <h4>Tambah Menu Baru</h4>
         <!-- <p>Sudah punya akun? <a href="login.php">Login di sini</a></p>
