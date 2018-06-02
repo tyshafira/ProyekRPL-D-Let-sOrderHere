@@ -37,7 +37,7 @@ session_start();
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!--<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>-->
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 </head>
 
 <body>
@@ -93,7 +93,6 @@ session_start();
       
             <li><a class="filter" data-filter=".makanan">Makanan</a></li>
             <li><a class="filter" data-filter=".minuman">Minuman</a></li>
-            <!--<li><a class="filter" data-filter=".coffee">Coffee</a></li>-->
             <p>Selesai Order? <a href="index.php#myorder">Klik disini!</a></p>
 
           </ul>
@@ -205,7 +204,7 @@ session_start();
                     <thead>
                       <th class="text-center">Nama Menu</th>
                       <th class="text-center">Jumlah Pesanan</th>
-                      <th class="text-center">Harga Menu</th>
+                      <th class="text-center">Harga Satuan</th>
                     </thead>
                     <tbody>
                       <?php if(mysqli_num_rows($query)) {?>
@@ -225,7 +224,7 @@ session_start();
             </div>
             <div class="col-md-12 btnpad">
               <div class="contacts-btn-pad">
-                <button class="contacts-btn" data-toggle="modal" data-target="#myconfirm">Order Now!</button>
+                <button class="contacts-btn" id="btn-orderNow">Order Now!</button>
                         <button class="contacts-btn" data-toggle="modal" data-target="#mypayment">FINISH</button>
               </div>
             </div>
@@ -306,7 +305,6 @@ session_start();
           <div class="modal-body">
             <form action="pesanan.php" id="menu_popUp" method="post">
               <div class="form-group text-center">
-                <!--<label for="pmenu">Menu...</label>-->
                 <label for="pilih_menu" id="titleMenu"></label>
                 <input type="hidden" name="id_menu" id="add_menu_input" value="0">
                 <input type="number" name="jmlh_order" placeholder="Banyak Menu" id="pilih_menu" min="1" required>
@@ -378,11 +376,10 @@ session_start();
             <label for="paymnt">Tentukan Jenis Pembayaranmu :</label>
             <br>
             <input type="radio" name="metode" value="Debet" id="rd1"> <label for="rd1">Debet</label>
-            <!-- <input type="radio" name="metode" value="Kredit" id="rd2"> <label for="rd2">Kredit</label> -->
             <input type="radio" name="metode" value="Tunai" id="rd3"> <label for="rd3">Tunai</label>
           </div>
           <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary" name="submit">Pilih</button>
+            <button type="submit" class="btn btn-primary" name="submit" id="confirmpay">Pilih</button>
           </div>
         </form>
       </div>
@@ -397,6 +394,42 @@ session_start();
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    $('#confirmpay').click(function(){
+      swal({
+        title : "Konfirmasi Pembayaran",
+        text : "Terima Kasih Konfirmasi berhasil silahkan menuju kasir!",
+        icon : 'success',
+        button : 'Close',
+        timer : 1200,
+      });
+    });  
+  </script>
+
+  <script>
+    $('#btn-orderNow').click(function(){
+
+        swal({
+            title: "Konfirmasi Order",
+            text: "Yakin akan order sekarang? Jika iya kamu tidak bisa order lagi!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+          .then((willOrder) => {
+              if (willOrder) {
+                swal("Okay! Orderan sedang diproses silahkan menunggu!", {
+                      icon: "success",
+                });
+              } else {
+                  swal("Orderanmu belum diproses!");
+              }
+          });
+    });
+</script>
 
   <script>
     $(document).ready(function(){
@@ -414,17 +447,6 @@ session_start();
       });
     });
   </script>
-
-  <script>
-  $(document).ready(function(){
-    $(".btn-conforderYa").click(function(){
-      <?php 
-      echo "alert('Pesananmu dalam proses, silahkan menunggu!');";
-      echo "location.replace('index.php#event');";
-      ?>
-    });
-  });
-</script>
 
   <?php
       if(isset($_GET["gagallogin"])){
