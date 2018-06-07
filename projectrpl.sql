@@ -1,41 +1,93 @@
 
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 02, 2018 at 12:28 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.2
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `projectrpl`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
 CREATE TABLE `admin` (
   `username` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
+
   `password` varchar(30) NOT NULL,
+
+
   `gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+
+INSERT INTO `admin` (`username`, `email`, `password`, `gender`) VALUES
+('Pacar Nanda', 'jihad@yahoo.com', 'jihadnanda123', 'Laki-Laki'),
+('Silvia Ananda', 'nanda@yahoo.com', 'a4571059a12a8d6d02193265d157a7', 'Perempuan'),
+('Alifah', 'papah@gmail.com', '3fc6f067d0d41f9957a066b3c7dbfde06e3fb82c2e80f4d85dc1ef26e36ad867', 'Perempuan'),
+('siti', 'siti@gmail.com', '123456', 'Perempuan'),
+('Taufik', 'taufik@gmail.com', '5994471abb01112afcc18159f6cc74', 'Laki-Laki'),
+('Tya Shafira', 'tya@gmail.com', 'tya12345', 'Perempuan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_meja`
+--
+
 CREATE TABLE `data_meja` (
   `id_mejapel` int(3) NOT NULL,
   `no_meja` int(2) NOT NULL,
+
   `jam_datang` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `data_meja` (`id_mejapel`, `no_meja`, `jam_datang`) VALUES
-(1, 1, '0000-00-00 00:00:00'),
-(2, 2, '0000-00-00 00:00:00'),
-(3, 3, '0000-00-00 00:00:00'),
-(4, 4, '0000-00-00 00:00:00'),
-(5, 5, '0000-00-00 00:00:00'),
-(6, 6, '0000-00-00 00:00:00'),
-(7, 7, '0000-00-00 00:00:00'),
-(8, 8, '0000-00-00 00:00:00'),
-(9, 9, '0000-00-00 00:00:00'),
-(10, 10, '0000-00-00 00:00:00'),
-(11, 11, '0000-00-00 00:00:00'),
-(12, 12, '0000-00-00 00:00:00'),
-(13, 13, '0000-00-00 00:00:00'),
-(14, 14, '0000-00-00 00:00:00'),
-(15, 15, '0000-00-00 00:00:00'),
-(16, 16, '0000-00-00 00:00:00');
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_meja`
+
+
+INSERT INTO `data_meja` (`id_mejapel`, `no_meja`, `status`) VALUES
+(1, 1, 'Tidak'),
+(2, 2, 'Tidak'),
+(3, 3, 'Tidak'),
+(4, 4, 'Tidak'),
+(5, 5, 'Tidak'),
+(6, 6, 'Tidak'),
+(7, 7, 'Tidak'),
+(8, 8, 'Tidak'),
+(9, 9, 'Tidak'),
+(10, 10, 'Tidak'),
+(11, 11, 'Tidak'),
+(12, 12, 'Tidak'),
+(13, 13, 'Tidak'),
+(14, 14, 'Tidak'),
+(15, 15, 'Tidak'),
+(16, 16, 'Tidak');
 
 
 
@@ -206,15 +258,14 @@ INSERT INTO `data_meja` (`id_mejapel`, `no_meja`, `jam_datang`) VALUES
 (16, 16, '0000-00-00 00:00:00');
 
 
-CREATE TABLE IF NOT EXISTS `menu` (
-  `id_menu` int(3) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menu` (
+  `id_menu` int(3) NOT NULL,
   `nama_menu` varchar(35) NOT NULL,
   `jenis_menu` int(1) NOT NULL,
   `deskripsi` text,
   `harga_menu` int(11) NOT NULL,
-  `gambar` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+  `gambar` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `jenis_menu`, `deskripsi`, `harga_menu`, `gambar`) VALUES
 (1, 'Teh Panas', 2, 'Dikonsumsi panas atau dingin, teh pun tetap nikmat. Umumnya, teh panas diminum saat cuaca dingin, sebaliknya, es teh menjadi favorit kala cuaca panas menyengat. \r\nManfaat dari teh panas :\r\nMendinginkan tubuh\r\nMencegah kanker\r\nMemicu air liur\r\nRelaksasi\r\nMencegah Flu', 5000, 'teh.jpg'),
@@ -257,42 +308,97 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `jenis_menu`, `deskripsi`, `harga_me
 (38, 'Martabak 3 Telur', 1, 'martabak telur adalah makanan camilan atau lauk-pauk yang biasa dikonsumsi oleh masyarakat Indonesia.  Martabak Telur mengandung energi sebesar 200 kilokalori, protein 8,9 gram, karbohidrat 29,5 gram, lemak 5,1 gram, kalsium 0,06 miligram, fosfor 0 miligram, dan zat besi 1,85 miligram.  Selain itu di dalam Martabak Telur juga terkandung vitamin A sebanyak 160 IU, vitamin B1 0 miligram dan vitamin C 0 miligram.  Hasil tersebut didapat dari melakukan penelitian terhadap 100 gram Martabak Telur, dengan jumlah yang dapat dimakan sebanyak 100 %.', 10000, 'martabak.jpg');
 
 
-CREATE TABLE IF NOT EXISTS `pesan` (
+CREATE TABLE `pesan` (
   `id_mejapel` int(11) NOT NULL,
-  `id_pesan` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pesan` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `jumlah_order` int(2) NOT NULL,
-  `jenis_bayar` text,
-  PRIMARY KEY (`id_pesan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
-
-
-INSERT INTO `pesan` (`id_mejapel`, `id_pesan`, `id_menu`, `jumlah_order`, `jenis_bayar`) VALUES
-(9, 6, 0, 2, ''),
-(13, 9, 0, 17, ''),
-(3, 10, 0, 2, ''),
-(1, 31, 0, 3, ''),
-(10, 32, 9, 10, ''),
-(10, 33, 9, 9, ''),
-(10, 34, 10, 6, ''),
-(11, 35, 6, 2, ''),
-(12, 36, 6, 2, ''),
-(12, 37, 10, 1, '');
-
-
-
-CREATE TABLE IF NOT EXISTS `rekap_struk` (
-  `id_mejapel` int(3) NOT NULL,
-  `id_menu` int(3) NOT NULL,
-  `jmlh_order` int(2) NOT NULL,
-  `jenis_bayar` varchar(10) NOT NULL,
-  `waktu_rekap` datetime DEFAULT NULL,
-  KEY `fk_id_mejapela` (`id_mejapel`),
-  KEY `fk_id_mejapelb` (`id_menu`)
+  `jenis_bayar` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+INSERT INTO `pesan` (`id_mejapel`, `id_pesan`, `id_menu`, `jumlah_order`, `jenis_bayar`) VALUES
+(13, 9, 0, 17, 'Tunai'),
+(7, 47, 6, 1, 'Tunai'),
+(7, 48, 8, 1, 'Tunai'),
+(7, 49, 3, 2, 'Tunai'),
+(4, 84, 6, 5, 'Cash'),
+(15, 90, 6, 1, 'Tunai'),
+(13, 116, 14, 4, 'Tunai'),
+(3, 117, 6, 1, 'Tunai'),
+(3, 118, 1, 1, 'Tunai'),
+(5, 123, 6, 3, 'Cash');
+
+
+
+CREATE TABLE `rekap_struk` (
+  `id_rekap` int(11) NOT NULL,
+  `id_mejapel` int(3) NOT NULL,
+  `id_menu` int(3) DEFAULT NULL,
+  `jmlh_order` int(2) DEFAULT NULL,
+  `jenis_bayar` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `data_meja`
+--
+ALTER TABLE `data_meja`
+  ADD PRIMARY KEY (`id_mejapel`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id_menu`);
+
+--
+-- Indexes for table `pesan`
+--
+ALTER TABLE `pesan`
+  ADD PRIMARY KEY (`id_pesan`);
+
+--
+-- Indexes for table `rekap_struk`
+
 ALTER TABLE `rekap_struk`
-  ADD CONSTRAINT `fk_id_mejapela` FOREIGN KEY (`id_mejapel`) REFERENCES `data_meja` (`id_mejapel`),
-  ADD CONSTRAINT `fk_id_mejapelb` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`);
+  ADD PRIMARY KEY (`id_rekap`);
+
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `data_meja`
+--
+ALTER TABLE `data_meja`
+  MODIFY `id_mejapel` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id_menu` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `pesan`
+--
+ALTER TABLE `pesan`
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+--
+-- AUTO_INCREMENT for table `rekap_struk`
+--
+ALTER TABLE `rekap_struk`
+  MODIFY `id_rekap` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
