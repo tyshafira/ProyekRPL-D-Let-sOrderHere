@@ -30,7 +30,7 @@ table {
 	border-spacing: 0;
 }
 #banner{
-    background: url(../img/banner-bg.jpg) no-repeat center top;
+    background: url(../img/bc.jpg) no-repeat center top;
     background-size: cover;
     min-height: 630px;
 }
@@ -103,11 +103,16 @@ table {
     color: #FFB03B;
     font-size: 46px;
     font-family: 'Satisfy', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
 }
 .header-p {
     color: #9699a6;
     font-size: 16px;
+}
+.header-b {
+    color: #9699a6;
+    font-size: 32px;
+    text-align: center;
 }
 .msg-row {
     margin-top: 56px;

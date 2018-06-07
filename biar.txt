@@ -1,0 +1,46 @@
+/*
+Test Awal 12
+* Wajib
+NIM *
+1608107010013
+Apa fungsi dari Naming Convention?
+Fungsi dari Naming Convention adalah digunakan untuk membuat program java lebih banyak dibaca. Penting untuk menggunakan nama yang bermakna dan tidak ambigu yang terdiri dari huruf java.
+Menurut anda kenapa nama Class harus Noun (Kata Benda)?
+Karena nama class tersebut harus menggunakan kata benda disebabkan class tersebut akan memiliki hal atau objek.
+Menurut anda kenapa nama Interface harus Adjective (Kata Sifat)?
+Nama interface harus adjective karena interface tersebut implementasi dari method/sifat yang ada.
+Menurut anda kenapa nama Method harus Verb (Kata Kerja)?
+Nama method harus bersifat kata kerja adalah karena method tersebut mengimplementasikan pekerjaan apapun yang bakal dikerjakan oleh objek.
+Jelaskan apa fungsi dari Javadoc?
+Fungsi javadoc adalah alat untuk menghasilkan dokumentasi api dari dokumentasi komentar yang ada.
+Dalam JavaDoc apa fungsi dari block tag: @param?
+Fungsi dari block tag @param adalah tag yang mencakup method dan constractor, tag ini wajib digunakan untuk setiap parameter  walaupun deskripsi sudah jelas.
+Dalam JavaDoc apa fungsi dari block tag: @return?
+Fungsi dari block tag @return adalah diperlukan untuk setiap method yang mengembalikan sesuatu selain void, bahkan jika itu berlebihan dengan deskripsi dari method.
+Jelaskan cara menulis dokumentasi dengan memakai JavaDoc?
+Dokumentasi khusus dalam kode java dibatasi oleh /*..........*/. /*Komentar diproses oleh java doc tool untuk menghasilkan dokumen api. JDK tool menghasilkan dokumen Api dari dokumentasi komentar.
+Jangan pernah mengirimkan sandi melalui Google Formulir.
+Formulir ini dibuat di luar domain Anda. Laporkan Penyalahgunaan - Persyaratan Layanan - Ketentuan Tambahan
+Google Formulir
+@rahmad-unsyiah*/
+
+/*$syntax_msk = "INSERT into pesanan where id_mejapel = '$no_meja'";*/
+
+		/*$login= mysqli_query($link,$syntax);
+		if ($login){
+
+			if(mysqli_num_rows($login) == 1){
+
+			//$_SESSION['Nama'] = "$nama";
+			header("HTTP/1.1 302 Moved Temporarily");
+			header("location: index.php#menu-list");
+			exit();
+
+			} else {
+				header("HTTP/1.1 302 Moved Temporarily");
+				header("location : index.php?gagallogin");
+				exit();
+			}
+		}else {
+			die(mysqli_error($link));
+		}*/

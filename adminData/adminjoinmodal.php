@@ -14,9 +14,16 @@
     $id_meja = $_POST['id_meja'];
     $total_harga = $_POST['total_harga'];
     $jenis_pembayaran = $_POST['jenis_pembayaran'];
+    $id_menu = $_POST['id_menu'];
+    $jumlah_order = $_POST['jumlah_order'];
 
-    $sql = "insert into rekap_struk(id_mejapel, jenis_bayar, id_menu) values($id_meja, $jenis_pembayaran, $id_menu)";
-    $result = $link->query($sql);
+    $i = 0;
+    foreach($id_menu as $id) {
+    	$sql = "insert into rekap_struk(id_mejapel, jenis_bayar, id_menu, jmlh_order) values($id_meja, $jenis_pembayaran, $id, ".$jumlah_order[$i].")";
+	    $result = $link->query($sql);
+
+	    $i++;
+    }
 
     $sql = "delete from pesan where id_mejapel = $id_meja";
     $result = $link->query($sql);
@@ -30,7 +37,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Project RPL Lets Order Here</title>
+<title>Project RPL</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -85,6 +92,10 @@
     height: auto;
 } 
 
+img {
+      border-radius: 50%;
+        }
+
 </style>
 </head>
 
@@ -97,14 +108,15 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="adminSetting.php"><i class="fa fa-play fa-rotate-270"></i> <?php echo $_COOKIE["username"]; ?></a> </div>
+       <a  href="adminAccountInformation.php"><img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" style="width:45px" style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
         <li><a href="#about" class="page-scroll">Daftar Pesanan</a></li>
-        <li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
+        <li><a href="tambahMenu.php" class="page-scroll">Add Menu</a><li>
+        <li><a href="adminUpdateMenu.php" class="page-scroll">delete Menu</a><li>
         <li><a href="../logout.php">Logout</a></li>
       </ul>
     </div>
@@ -123,7 +135,7 @@
       <div class="row">
         <div class="intro-text">
           <div class="row">
-            <h1 class="">Daftar Pesanan</h1>
+            <h1 class="logo-name">Daftar Pesanan</h1>
 
             <div class="col-sm-12">
               <?php
@@ -204,7 +216,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Struk</h4>
+          <h4 class="modal-title" id="myModalLabel">Struct</h4>
         </div>
         <div class="modal-body">
           <table id="data-pesanan" class="table table-striped">
@@ -281,8 +293,8 @@
         var dataBaru = '';
         dataBaru += '<tr>';
         dataBaru += '<td>'+(key+1)+'.</td>';
-        dataBaru += '<td>'+value.nama_menu+'</td>';
-        dataBaru += '<td>'+value.jumlah_order+'</td>';
+        dataBaru += '<td>'+value.nama_menu+'<input type="hidden" name="id_menu[]" value="'+value.id_menu+'"></td>';
+        dataBaru += '<td>'+value.jumlah_order+'<input type="hidden" name="jumlah_order[]" value="'+value.jumlah_order+'"></td>';
         dataBaru += '<td>'+value.harga_menu+'</td>';
         dataBaru += '</tr>';
 
@@ -370,5 +382,6 @@ $("#jenis_pembayaran").change(function(){
         return false;
     }   
 </script>  -->
+
 </body>
 </html>
