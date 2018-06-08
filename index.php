@@ -50,7 +50,11 @@ session_start();
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             
             <a href="#event">History</a>
-            <a href="#menu-list">Menu</a>
+            <?php 
+              if ($_SESSION['status_order'] == 0) {
+                echo "<a href=\"#menu-list\">Menu</a>";
+              }
+            ?>
             <!--<a href="#myorder">Your Order</a>-->
             <?php
             if(isset($_SESSION['User'])){
@@ -79,6 +83,7 @@ session_start();
   <!-- / banner -->
 
   <!-- menu -->
+  <?php if ($_SESSION['status_order'] == 0) : ?>
   <section id="menu-list" class="section-padding">
     <div class="container">
       <div class="row">
@@ -151,6 +156,7 @@ session_start();
       </div>
     </div>
   </section>
+  <?php endif; ?>
   <!--/ menu -->
 
   <!-- myorder -->
@@ -328,7 +334,7 @@ session_start();
         <h3>Konfirmasi Pesanan</h3>
       </div>
       <div class="modal-body">
-        <form action="#" id="conf-order" method="post">
+        <form action="status_order.php" id="conf-order" method="post">
           <div class="form-group text-center">
             <label for="confm-order">Kamu yakin akan proses order sekarang?</label>
           </div>
@@ -358,7 +364,7 @@ session_start();
 
   </div>
 </div>
-<!-- End Modal CONFIRM-ORDER --    
+<!-- End Modal CONFIRM-ORDER -- >   
 
 <!-- Modal CONFIRM-PAYMENT -->
 <div class="modal fade" id="mypayment">
@@ -402,9 +408,6 @@ session_start();
     $(".btn-conforderYa").click(function(){
       $(".page1").hide();
       $(".page2").show();
-    });
-    $(".btn-conforderOk").click(function(){
-      $("#menu-list").hide();
     });
   });
 </script>
