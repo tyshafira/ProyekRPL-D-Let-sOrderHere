@@ -7,24 +7,16 @@
 
 <?php
 	include ("../../connection.php");
+	$result87 = mysqli_query($link, "select count(*) from admin where img='$_COOKIE[email]'");
+	$data87   = mysqli_fetch_row($result87);
 ?>
-
-<?php
-    if(isset($_POST["input"]))
-  {
-      $nomorid = $_POST['id'];
-      mysqli_query($link,"delete from menu where id_menu=$nomorid");
-  }
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spectrum</title>
+<title>Project RPL</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -39,76 +31,96 @@
 <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
 
+ <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+
+ <!--tes tulisan aja-->
+ <link href="https://fonts.googleapis.com/css?family=Kaushan+Scriollapse: collapse; width: 500px; height: 120px;pt|Lobster|Modern+Antiqua|Dancing+Script" rel="stylesheet">
+
 <!-- Stylesheet
     ================================================== -->
 <link rel="stylesheet" type="text/css"  href="css/style.css">
 <link rel="stylesheet" type="text/css"  href="css/grs.css">
-</head>
+<link rel="stylesheet" type="text/css"  href="css/update.css">
+
+		<style>
+				img {
+				border-radius: 50%;
+					}
+		</style>
+	</head>
 
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-<!-- Navigation
-    ==========================================-->
-<nav id="menu" class="navbar navbar-default navbar-fixed-top">
-  <div class="container"> 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="adminAccountInformation.php"><img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=30 style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
-    
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
-        <li><a href="#about" class="page-scroll">Daftar Pesanan</a></li>
-        <li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
-        <li><a href="../logout.php">Logout</a></li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <div class="grs">
-    <p>&nbsp </p>
-  </div>
-  <!-- /.container-fluid -->
-</nav>
-
-<!-- Header -->
-<header id="header">
-  <div class="intro">
+	<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- Navigation
+		==========================================-->
+	<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+	<div class="container"> 
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+		<a  href="adminAccountInformation.php"><img src="img/adminPhoto/<?php if($data87[0]==="1"){ echo $_COOKIE['email'];} else {echo "default_img.png";}?>" style="width:45px" style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a></div>
+		
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
+			<li><a href="adminDaftarPesanan.php" class="page-scroll">Daftar Pesanan</a></li>
+			<li><a href="tambahMenu.php" class="page-scroll">Add Menu</a><li>
+			<li><a href="adminUpdateMenu.php" class="page-scroll">Delete Menu</a><li>
+			<li><a href="../logout.php">Logout</a></li>
+		</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<div class="grs">
+		<p>&nbsp </p>
+	</div>
+	<!-- /.container-fluid -->
+	</nav>
+	<br><br><br><br>
+	
+	<!-- Header -->
+	<header id="header">
+	<div class="intro tombol">
+	<div class="intro">
     <div class="container">
       <div class="row">
         <div class="intro-text">
+          <div class="row">
+            <h1 class="logo-name">Hapus Menu</h1>
+            
+		
+	   <?php
+       $result = mysqli_query($link, "SELECT * FROM menu");
+	   ?>
+		
+	   <?php
+	   $i=0;
+	   while ($data = mysqli_fetch_assoc($result) )
+       {$i++;
+			echo "<i>$i</i>";
+			echo "<a>$data[nama_menu]</a>";
+			echo "<a>Rp. $data[harga_menu]</a>";
+			echo "<button onclick=\"window.location.href = 'proccess.php?idMenu=$data[id_menu]';\">Delete</button><br><br><br><br>";
+	   }	
+		?>
 
-          <?php
-            $result = mysqli_query($link, "SELECT * FROM menu");
-                echo "id "."  nama menu "."  harga";
-             while ($data = mysqli_fetch_assoc($result) )
-             {
-              echo "<h2>".$data['id_menu']." ".$data['nama_menu']."  ".$data['harga_menu'];
-              echo "
-                      <form action=\"adminUpdateMenu.php\" method=\"post\">
-                          <input type='checkbox' name='id' value=$data[id_menu]>
-                          <button type='submit' name='input'>hapus menu</button>
-                      </form>
-                   ";
-              echo "<br>";
-             }
-          ?>
-
+			</div>
         </div>
+      </div>
     </div>
   </div>
+ </div>
 </header>
-
-<!-- footer -->
-<div id="footer">
-  <div class="container text-center">
-    <div class="fnav">
-      <p>Copyright &copy; 2016 LetOderHere. Designed by <a href="#" rel="nofollow">LetOderHere_template</a></p>
-    </div>
-  </div>
-</div>
-
-</body>
+	
+	<!-- footer -->
+	<div id="footer">
+	<div class="container text-center">
+		<div class="fnav">
+		<p>Copyright &copy; 2018 LetOderHere. Designed by <a href="#" rel="nofollow">LetOderHere_template</a></p>
+		</div>
+	</div>
+	</div>
+	
+	</body>
 </html>

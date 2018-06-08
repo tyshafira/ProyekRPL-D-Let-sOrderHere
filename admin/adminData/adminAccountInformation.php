@@ -7,15 +7,38 @@
 
 <?php
 	include ("../../connection.php");
+	$result87 = mysqli_query($link, "select count(*) from admin where img='$_COOKIE[email]'");
+	$data87   = mysqli_fetch_row($result87);
 ?>
 
 <?php
-	$result1 = mysqli_query($link, "select * from admin where email= \"$_COOKIE[email]\"");
-	$data1   = mysqli_fetch_row($result1);
-	$username = $data1[0];
-	$email    = $data1[1];
-	$password = $data1[2];
-	$gender   = $data1[3];
+	
+	if(isset($_POST["submit"]))
+	{
+		$username = $_POST['username'];
+		$alamat   = $_POST['alamat'];
+		$no_hp    = $_POST['no_hp'];
+
+		mysqli_query($link, "update admin set username='$username', alamat='$alamat', no_hp='$no_hp' where email='$_COOKIE[email]' ");
+
+		$result1 = mysqli_query($link, "select * from admin where email= \"$_COOKIE[email]\"");
+		$data1   = mysqli_fetch_row($result1);
+		$email    = $data1[1];
+		$gender   = $data1[3];
+
+	}
+
+	else
+	{	
+		$result1 = mysqli_query($link, "select * from admin where email= \"$_COOKIE[email]\"");
+		$data1   = mysqli_fetch_row($result1);
+		$username = $data1[0];
+		$email    = $data1[1];
+		$password = $data1[2];
+		$gender   = $data1[3];
+		$alamat   = $data1[4];
+		$no_hp    = $data1[5];
+	}
 
 ?>
 
@@ -92,6 +115,7 @@
 		<link rel="stylesheet" type="text/css"  href="css/style.css">
 		<link rel="stylesheet" type="text/css"  href="css/grs.css">
 		<link rel="stylesheet" type="text/css"  href="css/akunSettings.css">
+		<link rel="stylesheet" type="text/css"  href="css/info.css">
 		
 		<!-- new -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -107,6 +131,12 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../formLogin/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../formLogin/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="../formLogin/assets/ico/apple-touch-icon-57-precomposed.png">
+		<style>
+		img {
+		border-radius: 50%;
+			}
+		</style>
+		
 	
 	</head>
 	
@@ -119,15 +149,16 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			<a class="navbar-brand page-scroll" href="adminAccountInformation.php"><img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=30 style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
+			<a  href="adminAccountInformation.php"><img src="img/adminPhoto/<?php if($data87[0]==="1"){ echo $_COOKIE['email'];} else {echo "default_img.png";}?>" style="width:45px" style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
-				<li><a href="#about" class="page-scroll">Daftar Pesanan</a></li>
-				<li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
-				<li><a href="../logout.php">Logout</a></li>
+			<li><a href="adminDaftarPesanan.php" class="page-scroll">Daftar Pesanan</a></li>
+			<li><a href="tambahMenu.php" class="page-scroll">Add Menu</a><li>
+			<li><a href="adminUpdateMenu.php" class="page-scroll">delete Menu</a><li>
+			<li><a href="../logout.php">Logout</a></li>
 			</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -185,33 +216,43 @@
 				}*/
 				?>
 				
-				<!-- form change password -->
+				<!-- form biodata -->
 				
-				    <form role="form" class="registration-form">
-				       <div class="form-group">
-				               		<label class="sr-only" for="form-first-name">nama</label>
-				                   	<p type="password" name="password1" class="form-first-name form-control">
-									 Username: <?php echo $username;  ?>
-				       </div>
-				       <div class="form-group">
-				                   	<label class="sr-only" for="form-email">Email</label>
-				                   	<p type="password" name="password1"  class="form-first-name form-control">
-									<strong>Email:</strong> <?php echo $email;  ?>
-				       </div>
-					   <div class="form-group">
-				                   	<label class="sr-only" for="form-password">password</label>
-				                   	<p type="password" name="password1"  class="form-first-name form-control">
-									<strong>Gender:</strong> <?php echo $gender;  ?>
-				       </div>
-					   <div class="form-group">
-				                   	<label class="sr-only" for="form-password">password</label>
-				                   	<p type="password" name="password1"  class="form-first-name form-control">
-									<strong>Alamat:</strong> <?php echo "jln merpati no. 5";  ?>
-				       </div>
-					
-				                   <button type="submit" name="submit" class="btn">Edit Informasi Akun</button>
-				    </form>
-				<!-- end of change password -->
+				<form action="adminAccountInformation.php" style="max-width:500px;margin:auto" method="post">
+				<div class="input-container">
+				    <i class="fa fa-user icon"></i>
+				    <input type="text" name="username" value="<?=$username?>" class="input-field">
+				</div>
+				
+				<div class="input-container">
+					<i class="fa fa-envelope icon"></i>
+					<a class="input-field"><?=$email?></a>
+				</div>
+				
+				<div class="input-container">
+					<i class="fa fa-male icon"></i>
+					<a class="input-field"><?=$gender?></a>
+				</div>
+				
+				<div class="input-container">
+				    <i class="fa fa-home icon"></i>
+				    <input type="text" name="alamat" value="<?=$alamat?>" class="input-field">
+				</div>
+
+				<div class="input-container">
+				    <i class="fa fa-mobile icon"></i>
+				    <input type="text" name="no_hp" value="<?=$no_hp?>" class="input-field">
+				</div>
+
+				<!--div class="input-container">
+					<i class="fa fa-key icon"></i>
+					<input class="input-field" type="password" placeholder="Password" name="psw">
+				</div-->
+				
+				<button type="submit" name="submit" class="btn">Ubah Biodata</button>
+				</form>
+
+				<!-- end of biodata -->
 				
 			    </div>
           	</div>

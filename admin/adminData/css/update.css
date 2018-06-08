@@ -158,7 +158,7 @@ hr {
 	display: table;
 	width: 100%;
 	padding: 0;
-	text-align: center;
+	
 	background: url(../img/intro-bg.jpg) no-repeat center bottom;
 	background-color: #e5e5e5;
 	-webkit-background-size: cover;
@@ -177,12 +177,41 @@ hr {
 	text-transform;
 	margin-bottom: 20px;
 }
-.intro p {
-	color: silver;
-	font-size: 22px;
-	margin-bottom: 40px;
-	margin-top: 20px;
+.intro a {
+	width: 200px;
+    height: 30px;
+    margin:20px;
+    background-color: green;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    float: left;
 }
+
+.intro button {
+	width: 200px;
+    height: 30px;
+    margin:20px;
+    background-color: brown;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+}
+
+.intro i{
+	width: 30px;
+    height: 30px;
+    margin:20px;
+    background-color: gray;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    float: left;
+}
+
+
+
 header .intro-text {
 	padding-top: 250px;
 	padding-bottom: 200px;
@@ -447,10 +476,4 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	float: left;
 	margin-bottom: 20px;
 }
-}
-.logo-name{
-    font-family: 'Satisfy', sans-serif;
-    font-size: 65px;
-    margin-top: 140px;
-    color: #FFB03B;
 }

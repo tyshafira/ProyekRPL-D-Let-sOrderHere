@@ -64,7 +64,9 @@
 		$email     = $_POST["email"];
 		$password  = $_POST["password"];
 		$password2 = $_POST["password2"];
+		$alamat    = $_POST["alamat"];
 		$gender    = $_POST["gender"];
+		$no_hp	   = $_POST["no_hp"];
 		
 		//make error variable
 		$error_msg2="";
@@ -74,7 +76,7 @@
 			if($password==$password2)
 			{
 				//insert data into database
-				$angka = mysqli_query($link,"insert into admin values (\"$nama\",\"$email\",\"$password\",\"$gender\")");
+				$angka = mysqli_query($link,"insert into admin(username, email, password, gender, alamat, no_hp) values (\"$nama\",\"$email\",\"$password\",\"$gender\",\"$alamat\",\"$no_hp\")");
 				
 				//checking avaibility email
 				if($angka==0)
@@ -256,9 +258,18 @@
 				                        </div>
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-email">Email</label>
-				                        	<input type="text" name="gender" placeholder="Masukkan gender..." class="form-email form-control" id="form-email">
+				                        	<input type="radio" name="gender" value="laki-laki" id="form-email">laki laki
+				                        	<input type="radio" name="gender" value="perempuan" id="form-email">perempuan
 				                        </div>
 				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-first-name">Email</label>
+				                        	<input type="text" name="alamat" placeholder="Masukkan Alamat Anda..." class="form-last-name form-control" id="form-first-name">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-first-name">Email</label>
+				                        	<input type="text" name="no_hp" placeholder="Masukkan Kontak Anda..." class="form-last-name form-control" id="form-first-name">
+				                        </div>
+										<div class="form-group">
 				                        	<label class="sr-only" for="form-first-name">Email</label>
 				                        	<input type="password" name="password" placeholder="Masukkan Password..." class="form-last-name form-control" id="form-first-name">
 				                        </div>

@@ -7,6 +7,8 @@
 
 <?php
 	include ("../../connection.php");
+	$result87 = mysqli_query($link, "select count(*) from admin where img='$_COOKIE[email]'");
+	$data87   = mysqli_fetch_row($result87);
 ?>
 
 <?php
@@ -15,6 +17,7 @@
 		$nama_folder="img/adminPhoto";
 		$tmp = $_FILES["file_upload"]["tmp_name"];
 		$nama_file = $_COOKIE['email'];
+		mysqli_query($link, "update admin set img='$_COOKIE[email]' where email='$_COOKIE[email]'");
 		move_uploaded_file($tmp, "$nama_folder/$nama_file");
 	}
 ?>
@@ -59,6 +62,11 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../formLogin/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../formLogin/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="../formLogin/assets/ico/apple-touch-icon-57-precomposed.png">
+		<style>
+		img {
+		border-radius: 50%;
+			}
+		</style>
 	
 	</head>
 	
@@ -71,15 +79,16 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			<a class="navbar-brand page-scroll" href="adminAccountInformation.php"><img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=30 style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
+			<a  href="adminAccountInformation.php"><img src="img/adminPhoto/<?php if($data87[0]==="1"){ echo $_COOKIE['email'];} else {echo "default_img.png";}?>" style="width:45px" style="float: left;"><?php echo "&nbsp".$_COOKIE["username"] ?></a> </div>
 			
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="adminHomePage.php" class="page-scroll">Home</a></li>
-				<li><a href="#about" class="page-scroll">Daftar Pesanan</a></li>
-				<li><a href="#portfolio" class="page-scroll">Update Menu</a></li>
-				<li><a href="../logout.php">Logout</a></li>
+			<li><a href="adminDaftarPesanan.php" class="page-scroll">Daftar Pesanan</a></li>
+			<li><a href="tambahMenu.php" class="page-scroll">Add Menu</a><li>
+			<li><a href="adminUpdateMenu.php" class="page-scroll">delete Menu</a><li>
+			<li><a href="../logout.php">Logout</a></li>
 			</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -124,7 +133,7 @@
 				<!-- form change password -->
 				
 				    <form role="form" action="adminChangePhoto.php" enctype="multipart/form-data" method="post" class="registration-form">
-				       <img src="img/adminPhoto/<?php echo $_COOKIE['email'];?>" height=200>
+				       <img src="img/adminPhoto/<?php if($data87[0]==="1"){ echo $_COOKIE['email'];} else {echo 'default_img.png';} ?>" height=200>
 					   <div class="form-group">
 				                   	<label class="sr-only" for="form-password">password</label>
 				                   	<input type="file" name="file_upload" class="btn" value=10000000>
