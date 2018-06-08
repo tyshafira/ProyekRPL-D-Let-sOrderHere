@@ -224,7 +224,7 @@ session_start();
             </div>
             <div class="col-md-12 btnpad">
               <div class="contacts-btn-pad">
-                <button class="contacts-btn" id="btn-orderNow">Order Now!</button>
+                <button class="contacts-btn btn-fixOrder" data-toggle="modal" data-target="#myconfirm">Order Now!</button>
                         <button class="contacts-btn" data-toggle="modal" data-target="#mypayment">FINISH</button>
               </div>
             </div>
@@ -317,7 +317,48 @@ session_start();
         </div>
       </div>
     </div>
-  <!-- End Modal Menu -->    
+  <!-- End Modal Menu -->
+
+<!-- Modal CONFIRM-ORDER -->
+<div class="modal fade" id="myconfirm">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content page1">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Konfirmasi Pesanan</h3>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="conf-order" method="post">
+          <div class="form-group text-center">
+            <label for="confm-order">Kamu yakin akan proses order sekarang?</label>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary btn-conforderYa" name="conf-ya">Ya</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-content page2">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>Konfirmasi Pesanan</h3>
+      </div>
+      <div class="modal-body">
+        <form action="#" id="conf-order" method="post">
+          <div class="form-group text-center">
+            <label for="confm-order">Pesananmu sedang diproses, silahkan menunggu!</label>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-conforderOk" name="conf-ya">Ok</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- End Modal CONFIRM-ORDER --    
 
 <!-- Modal CONFIRM-PAYMENT -->
 <div class="modal fade" id="mypayment">
@@ -351,41 +392,21 @@ session_start();
   <script src="js/bootstrap.min.js"></script>
   <script src="js/custom.js"></script>
   <script src="contactform/contactform.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <script>
-    $('#confirmpay').click(function(){
-      swal({
-        title : "Konfirmasi Pembayaran",
-        text : "Terima Kasih Konfirmasi berhasil silahkan menuju kasir!",
-        icon : 'success',
-        button : 'Close',
-        timer : 1200,
-      });
-    });  
-  </script>
-
-  <script>
-    $('#btn-orderNow').click(function(){
-
-        swal({
-            title: "Konfirmasi Order",
-            text: "Yakin akan order sekarang? Jika iya kamu tidak bisa order lagi!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-          .then((willOrder) => {
-              if (willOrder) {
-                swal("Okay! Orderan sedang diproses silahkan menunggu!", {
-                      icon: "success",
-                });
-              } else {
-                  swal("Orderanmu belum diproses!");
-              }
-          });
+  $(document).ready(function(){
+    $(".btn-fixOrder").click(function(){
+      $(".page2").hide();
+      $(".page1").show();
     });
+    $(".btn-conforderYa").click(function(){
+      $(".page1").hide();
+      $(".page2").show();
+    });
+    $(".btn-conforderOk").click(function(){
+      $("#menu-list").hide();
+    });
+  });
 </script>
 
   <script>
